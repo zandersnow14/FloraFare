@@ -1,0 +1,25 @@
+{% from 'form_helper.html' import displayField %}
+
+{% extends "base.html" %}
+
+{% block title %}Register{% endblock %}
+
+{% block content %}
+
+<h1>Register</h1>
+
+<form method="post">
+
+    {{ displayField(form.username, 'Username', autocomplete='off', autofocus=true) }}
+    {{ displayField(form.email, 'Email')}}
+    {{ displayField(form.password, 'Password') }}
+    {{ displayField(form.confirm_pswd, 'Confirm Password') }}
+
+    <div>
+        {{ form.submit_button }}
+    </div>
+
+    {{ form.csrf_token }}
+</form>
+
+{% endblock %}
