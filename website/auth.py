@@ -42,10 +42,6 @@ def register():
                 vars=(username, email, hashpw_dec))
             db_conn.commit()
 
-        # new_user = User(username=username, email=email, password=hashpw)
-        # db.session.add(new_user)
-        # db.session.commit()
-
         print(f"{username} - {email} - {hashpw}")
         flash('Account successfully created!')
         return redirect(url_for('auth.login'))
