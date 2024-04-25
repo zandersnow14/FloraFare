@@ -1,4 +1,6 @@
 flask
 flask-wtf
 flask-login
+flask-sqlalchemy
 python-dotenv
+email-validator

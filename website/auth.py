@@ -1,18 +1,28 @@
 """Authentication routes for the website."""
 
-from flask import Blueprint
+from flask import Blueprint, request, render_template, flash, redirect, url_for
+
+from .forms import RegistrationForm
 
 auth = Blueprint('auth', __name__)
 
 
-@auth.route("/register")
+@auth.route("/register", methods=["GET", "POST"])
 def register():
-    return "<h1>Register</h1>"
+    reg_form = RegistrationForm()
+    if request.method == "POST" and reg_form.validate():
+        username = reg_form.username.data
+        password = reg_form.password.data
+        print(f"{username} - {password}")
+        flash('Success!')
+        return redirect(url_for('auth.login'))
+
+    return render_template('register.html', form=reg_form)
 
 
 @auth.route("/login")
 def login():
-    return "<h1>Login</h1>"
+    return render_template('login.html')
 
 
 @auth.route("logout")
