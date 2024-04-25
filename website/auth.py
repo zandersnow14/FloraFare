@@ -3,7 +3,7 @@
 from os import environ
 
 from flask import Blueprint, request, render_template, flash, redirect, url_for
-from flask_login import login_user, login_required, logout_user
+from flask_login import login_user, login_required, logout_user, current_user
 import bcrypt
 from dotenv import load_dotenv
 
@@ -30,11 +30,11 @@ def register():
 
         if is_username_taken(db_conn, username):
             flash("Username already taken!", category="error")
-            return render_template('register.html', form=reg_form)
+            return render_template('register.html', form=reg_form, user=current_user)
 
-        if is_email_taken(db_conn, username):
+        if is_email_taken(db_conn, email):
             flash("Email already taken!", category="error")
-            return render_template('register.html', form=reg_form)
+            return render_template('register.html', form=reg_form, user=current_user)
 
         with db_conn.cursor() as cur:
             cur.execute(
@@ -50,7 +50,7 @@ def register():
         flash('Account successfully created!')
         return redirect(url_for('auth.login'))
 
-    return render_template('register.html', form=reg_form)
+    return render_template('register.html', form=reg_form, user=current_user)
 
 
 @auth.route("/login", methods=["GET", "POST"])
@@ -64,7 +64,7 @@ def login():
 
         if not is_email_taken(db_conn, email):
             flash('Email does not exist')
-            return render_template('login.html', form=login_form)
+            return render_template('login.html', form=login_form, user=current_user)
 
         hashpw = get_hashpw(db_conn, email)
 
@@ -77,7 +77,7 @@ def login():
         else:
             flash('Incorrect password')
 
-    return render_template('login.html', form=login_form)
+    return render_template('login.html', form=login_form, user=current_user)
 
 
 @auth.route("/logout")
