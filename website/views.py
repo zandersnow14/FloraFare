@@ -3,7 +3,6 @@
 from flask import Blueprint, render_template, request, flash, session, redirect, url_for
 from flask_login import login_required, current_user
 
-from .models import User
 from .scraping import scrape_kojo, get_website_name, scrape_seasons, get_kojo_sizes
 
 PFAS_WEBSITE = 'plantsforallseasons'
