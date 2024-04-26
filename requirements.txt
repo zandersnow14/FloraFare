@@ -6,3 +6,5 @@ python-dotenv
 email-validator
 bcrypt
 psycopg2-binary
+selenium
+regex
