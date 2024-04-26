@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block title %}Plant Submitted{% endblock %}
+
+{% block content %}
+<h1>Plant Added!</h1>
+<img src="https://{{ plant.image_url }}" alt="{{ plant.plant_name }}">
+<a href="{{ plant.url }}">{{ plant.plant_name }}</a>
+<span>Original Price: £{{ plant.og_price }}</span>
+<span>Current Price: £{{ plant.current_price }}</span>
+<span>In Stock: {{ plant.in_stock }}</span>
+{% endblock %}
