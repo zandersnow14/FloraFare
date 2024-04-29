@@ -4,5 +4,11 @@
 
 {% block content %}
 <h1>Welcome {{ user['username'] }}!</h1>
-<li><a href="{{ url_for('views.add_plant') }}">Add Plant</a>
+<li><a href="{{ url_for('views.add_plant') }}">Add Plant</a></li>
+{% for plant in plants %}
+<h2><a href="{{ plant.url }}" target="_blank">{{ plant.plant_name }}</a></h2>
+<img src="https://{{ plant.image_url }}" alt="{{ plant.plant_name }}" width="200px">
+<li>Original Price - {{ plant.original_price }}</li>
+<li>In Stock - {{ plant.in_stock }}</li>
+{% endfor %}
 {% endblock %}
