@@ -1,20 +1,28 @@
 """Routes for the website."""
 
+from os import environ
+
+from dotenv import load_dotenv
 from flask import Blueprint, render_template, request, flash, session, redirect, url_for
 from flask_login import login_required, current_user
 
 from .scraping import scrape_kojo, get_website_name, scrape_seasons, get_kojo_sizes
+from .database import insert_plant_data, insert_subscription, get_db_conn, is_plant_in_db, get_user_plants
 
 PFAS_WEBSITE = 'plantsforallseasons'
 KOJO_WEBSITE = 'houseofkojo'
 
 views = Blueprint('views', __name__)
 
+load_dotenv()
+
 
 @views.route("/")
 @login_required
 def home():
-    return render_template('home.html', user=current_user)
+    db_conn = get_db_conn(environ)
+    user_plants = get_user_plants(db_conn, current_user.get_id())
+    return render_template('home.html', user=current_user, plants=user_plants)
 
 
 @views.route("/add_plant", methods=["GET", "POST"])
@@ -24,6 +32,8 @@ def add_plant():
     if request.method == "GET":
         return render_template('add_plant.html', user=current_user)
 
+    db_conn = get_db_conn(environ)
+
     plant_url = request.form.get('plant_url')
     website_name = get_website_name(plant_url)
     if website_name not in [PFAS_WEBSITE, KOJO_WEBSITE]:
@@ -31,7 +41,9 @@ def add_plant():
         return render_template('add_plant.html', user=current_user)
     if website_name == PFAS_WEBSITE:
         plant_data = scrape_seasons(plant_url)
-        print(plant_data)
+        if not is_plant_in_db(db_conn, plant_data):
+            insert_plant_data(db_conn, plant_data)
+        insert_subscription(db_conn, plant_data, current_user.get_id())
         return render_template('plant_submitted.html', user=current_user, plant=plant_data)
     session['plant_url'] = plant_url
     return redirect(url_for('views.choose_size'))
@@ -44,6 +56,10 @@ def choose_size():
     if request.method == "GET":
         sizes = get_kojo_sizes(plant_url)
         return render_template('choose_size.html', user=current_user, sizes=sizes)
+    db_conn = get_db_conn(environ)
     size = request.form.get('size')
     plant_data = scrape_kojo(plant_url, size)
+    if not is_plant_in_db(db_conn, plant_data):
+        insert_plant_data(db_conn, plant_data)
+    insert_subscription(db_conn, plant_data, current_user.get_id())
     return render_template('plant_submitted.html', user=current_user, plant=plant_data)
