@@ -97,7 +97,7 @@ def get_user_plants(db_conn: connection, user_id: int) -> list[RealDictRow]:
         cur.execute(
             """SELECT plants.* FROM plants JOIN subscriptions AS sub ON sub.plant_id = plants.plant_id WHERE sub.user_id = (%s);""",
             (user_id,))
-        results = cur.fetchall()
+        results = cur.fetchall()[::-1]
 
         return results
 
