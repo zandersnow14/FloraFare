@@ -14,8 +14,8 @@ CREATE TABLE plants (
     plant_id SERIAL PRIMARY KEY,
     plant_name TEXT UNIQUE NOT NULL,
     original_price DECIMAL,
-    url TEXT UNIQUE NOT NULL,
-    image_url TEXT UNIQUE NOT NULL,
+    url TEXT NOT NULL,
+    image_url TEXT NOT NULL,
     in_stock BOOLEAN
 );
 
@@ -23,6 +23,7 @@ CREATE TABLE subscriptions (
     sub_id SERIAL PRIMARY KEY,
     user_id INT,
     plant_id INT,
+    sub_added TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES users(user_id),
     FOREIGN KEY (plant_id) REFERENCES plants(plant_id)
 );
