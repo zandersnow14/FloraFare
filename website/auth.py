@@ -65,7 +65,6 @@ def login():
         hashpw = get_hashpw(db_conn, email)
 
         if bcrypt.checkpw(password.encode(), hashpw.encode()):
-            flash('Logged in successfully!')
             user = User.query.filter_by(email=email).first()
             login_user(user, remember=True)
             return redirect(url_for('views.home'))
