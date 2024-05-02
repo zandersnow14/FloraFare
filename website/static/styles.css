@@ -1,0 +1,427 @@
+/* Base Styles */
+body {
+    font-family: 'Amethysta', sans-serif;
+    background-color: #FFFFF5; /* Off white */
+    color: #333; /* Dark text color */
+    /* margin: 0;
+    padding: 0; */
+}
+
+
+/* Flash Messages */
+#hideMe {
+    -webkit-animation: cssAnimation 0s ease-in 5s forwards;
+    /* Safari and Chrome */
+    animation: cssAnimation 0s ease-in 5s forwards;
+}
+@keyframes cssAnimation {
+    0%   {opacity: 1;}
+    90%  {opacity: 1;}
+    100% {opacity: 0;}
+}
+@-webkit-keyframes cssAnimation {
+    0%   {opacity: 1;}
+    90%  {opacity: 1;}
+    100% {opacity: 0;}
+}
+
+.flashes {
+    display: flex;
+    justify-content: center;
+    list-style-type: none;
+    padding: 10px;
+    margin: 0;
+}
+
+.flashes li {
+    background-color: #588157;
+    color: #f4f4f4; /* Dark text color */
+    padding: 8px 12px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    font-size: 15px;
+}
+
+.plant-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+}
+
+
+.reg-form {
+    /* display: inline-block; */
+    padding: 10px;
+    width: 50%;
+    margin: 10px;
+    box-sizing: border-box;
+}
+
+.reg-form input[type="text"],
+.reg-form input[type="email"],
+.reg-form input[type="password"] {
+    font-family: 'Amethysta', sans-serif;
+    width: 85%;
+    padding: 10px;
+    margin: 2px;
+    border: 1px solid #ccc; /* Light gray border */
+    border-radius: 5px;
+    box-sizing: border-box;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.reg-form input[type="submit"] {
+    font-family: 'Amethysta', sans-serif;
+    background-color: #588157; /* Darker green */
+    color: #fff; /* White text color */
+    border: none;
+    border-radius: 5px;
+    padding: 8px 30px;
+    cursor: pointer;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.reg-form input[type="submit"]:hover {
+    background-color: #71a970; /* Slightly lighter green on hover */
+}
+
+
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    flex: auto;
+}
+
+.login-photo {
+    height: auto;
+    width: 25%;
+    display: flex;
+    justify-content: center;
+
+}
+
+.reg-container {
+    display: flex;
+    justify-content: center;
+}
+
+.form-container {
+    display: flex;
+    width: 40%;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+
+.form-container h1 {
+    display: flex;
+    justify-content: center;
+    margin: 10px;
+}
+
+.login-form {
+    /* display: inline-block; */
+    padding: 10px;
+    width: 50%;
+    margin: 10px;
+    box-sizing: border-box;
+}
+
+.login-form input[type="text"],
+.login-form input[type="email"],
+.login-form input[type="password"] {
+    font-family: 'Amethysta', sans-serif;
+    width: 85%;
+    padding: 10px;
+    margin: 2px;
+    border: 1px solid #ccc; /* Light gray border */
+    border-radius: 5px;
+    box-sizing: border-box;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.login-form input[type="submit"] {
+    font-family: 'Amethysta', sans-serif;
+    background-color: #588157; /* Darker green */
+    color: #fff; /* White text color */
+    border: none;
+    border-radius: 5px;
+    padding: 8px 30px;
+    cursor: pointer;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.login-form input[type="submit"]:hover {
+    background-color: #71a970; /* Slightly lighter green on hover */
+}
+
+#login-line {
+    border: 1px solid #333;
+    width: 30%;
+}
+
+.animation {
+    margin: auto;
+    width: 50%;
+}
+
+nav {
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav img {
+    margin: 0;
+    font-size: 1.5em;
+    width: 200px;
+}
+
+nav h1 a {
+    color: #333;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+nav ul li {
+    display: inline-block;
+    margin-left: 20px;
+}
+
+nav ul li:first-child {
+    margin-left: 0;
+}
+
+nav ul li a {
+    color: #333; /* White text color */
+    text-decoration: none;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #588157; /* Beige on hover */
+}
+
+nav h1 a:hover {
+    color: #588157;
+}
+
+/* Quirky Styles */
+h1 {
+    font-size: 2em;
+    color: #588157; /* Darker green */
+    text-align: center;
+}
+
+h2 {
+    font-size: 1.5em;
+    color: #333; /* Dark text color */
+    margin-top: 30px;
+    text-align: center;
+}
+
+.plant-info img {
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    display: flex;
+    justify-content: flex-start;
+    margin: 20px 20px;
+}
+
+.plant-text {
+    display: flex;
+    flex-direction: column;
+    padding-right: 15px;
+    padding-top: 0;
+}
+
+.plant-list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Plant Info */
+.plant-info {
+    text-align: left;
+    max-width: 800px;
+    display: flex;
+    margin-top: 0px;
+    flex-direction: row;
+    justify-content: center;
+    margin: 20px;
+    background-color: #eef3e1;
+    border-radius: 15px;
+    box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+#plant-delete {
+    font-family: 'Amethysta', sans-serif;
+    background-color: #588157; /* Darker green */
+    color: #fff; /* White text color */
+    border: none;
+    border-radius: 5px;
+    padding: 8px 30px;
+    cursor: pointer;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.plant-details {
+    display: flex;
+    flex-direction: row;
+    font-size: 30px;
+}
+
+.plant-details #in-stock {
+    color: #588157;
+    font-size: 25px;
+}
+
+.plant-details #out-stock {
+    color: #a55454;
+    font-size: 25px;
+}
+
+.plant-info #title {
+    display: flex;
+    justify-content: flex-start;
+    text-align: center;
+}
+
+.plant-info h2 a {
+    color: #333; /* White text color */
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.plant-info h2 a:hover {
+    color: #588157;
+}
+
+
+.plant-info li {
+    display: block;
+    margin-top: 10px;
+    max-width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Centering Content */
+nav,
+h1,
+img,
+.flashes,
+ul {
+    text-align: center;
+}
+
+ul {
+    margin-top: 10px;
+}
+
+li {
+    display: inline;
+    margin-left: 20px;
+}
+
+.plant-form {
+    display: flex;
+    justify-content: center;
+}
+
+.add-plant {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: fit-content;
+}
+
+.add-plant form {
+    display: flex;
+    padding: 10px;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.add-plant input[type='url'] {
+    font-family: 'Amethysta', sans-serif;
+    width: 100%;
+    padding: 10px;
+    margin: 20px;
+    border: 1px solid #ccc; /* Light gray border */
+    border-radius: 5px;
+    box-sizing: border-box;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.add-plant button[type='submit'] {
+    font-family: 'Amethysta', sans-serif;
+    background-color: #588157; /* Darker green */
+    color: #fff; /* White text color */
+    border: none;
+    border-radius: 5px;
+    padding: 8px 30px;
+    cursor: pointer;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+#add-plant-line {
+    border: 1px solid #333;
+    width: 80%;
+}
+
+.choose-size {
+    display: flex;
+    padding: 10px;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.choose-size form {
+    display: flex;
+    padding: 10px;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.choose-size select {
+    font-family: 'Amethysta', sans-serif;
+    width: 90%;
+    padding: 10px;
+    margin: 20px;
+    border: 1px solid #ccc; /* Light gray border */
+    border-radius: 5px;
+    box-sizing: border-box;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.choose-size button[type='submit'] {
+    font-family: 'Amethysta', sans-serif;
+    background-color: #588157; /* Darker green */
+    color: #fff; /* White text color */
+    border: none;
+    border-radius: 5px;
+    padding: 8px 30px;
+    cursor: pointer;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
