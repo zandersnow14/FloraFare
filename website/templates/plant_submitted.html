@@ -3,10 +3,13 @@
 {% block title %}Plant Submitted{% endblock %}
 
 {% block content %}
+<div class="plant-list">
 <h1>Plant Added!</h1>
-<img src="https://{{ plant.image_url }}" alt="{{ plant.plant_name }}">
-<a href="{{ plant.url }}">{{ plant.plant_name }}</a>
-<span>Original Price: £{{ plant.og_price }}</span>
-<span>Current Price: £{{ plant.current_price }}</span>
-<span>In Stock: {{ plant.in_stock }}</span>
+<div class="plant-info">
+    <h2><a href="{{ plant.url }}" target="_blank">{{ plant.plant_name }}</a></h2>
+    <img src="https://{{ plant.image_url }}" alt="{{ plant.plant_name }}" width="200px">
+    <li>Original Price - £{{ plant.og_price }}</li>
+    <li>In Stock - {{ plant.in_stock }}</li>
+</div>
+</div>
 {% endblock %}

@@ -3,14 +3,15 @@
 {% block title %}Add Plant{% endblock %}
 
 {% block content %}
-<h1>Add Plant</h1>
-<div>
-    <h2>Please add a plant to be tracked</h2>
+<div class="plant-form">
+    <div class="add-plant">
+    <h1>Add Plant</h1>
+    <hr id="add-plant-line">
     <form method="post">
-        <label for="plant_url">Plant URL</label>
-        <input type="url" id="plant_url" name="plant_url" required>
+        <input type="url" id="plant_url" name="plant_url" required placeholder="Plant URL">
 
         <button type="submit">Submit</button>
     </form>
+</div>
 </div>
 {% endblock %}

@@ -2,22 +2,28 @@
 
 {% extends "base.html" %}
 
-{% block title %}Register{% endblock %}
+{% block title %}Log In{% endblock %}
 
 {% block content %}
-
-<h1>Login</h1>
-
-<form method="post">
-
-    {{ displayField(form.email, 'Email')}}
-    {{ displayField(form.password, 'Password') }}
-
-    <div>
-        {{ form.submit_button }}
+<div class="login-main">
+<div class="login-container">
+    <div class="login-photo">
+        <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script> 
+        <dotlottie-player class="animation" src="https://lottie.host/4b4c67ae-2665-4fd9-a030-975b8b6e4335/Nl7hIKZHY2.json" background="transparent" speed="1" loop autoplay></dotlottie-player>
     </div>
+    <div class="form-container" id="login">
+        <h1>Login</h1>
+        <hr id="login-line">
+        <form method="post" class="login-form">
 
-    {{ form.csrf_token }}
-</form>
+            {{ displayField(form.email, 'Email')}}
+            {{ displayField(form.password, 'Password') }}
+            {{ form.submit_button }}
+
+            {{ form.csrf_token }}
+        </form>
+    </div>
+</div>
+</div>
 
 {% endblock %}

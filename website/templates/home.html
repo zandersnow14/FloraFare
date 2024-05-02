@@ -3,12 +3,29 @@
 {% block title %}FloraFare{% endblock %}
 
 {% block content %}
-<h1>Welcome {{ user['username'] }}!</h1>
-<li><a href="{{ url_for('views.add_plant') }}">Add Plant</a></li>
-{% for plant in plants %}
-<h2><a href="{{ plant.url }}" target="_blank">{{ plant.plant_name }}</a></h2>
-<img src="https://{{ plant.image_url }}" alt="{{ plant.plant_name }}" width="200px">
-<li>Original Price - {{ plant.original_price }}</li>
-<li>In Stock - {{ plant.in_stock }}</li>
-{% endfor %}
+<div class="plant-list">
+    <h1>{{ user['username'].capitalize() }}, here are your plants...</h1>
+    {% for plant in plants %}
+    <div class="plant-info">
+        <div class="plant-img">
+            <img src="https://{{ plant.image_url }}" alt="{{ plant.plant_name }}" width="200px">
+        </div>
+        <div class="plant-text">
+            <h2><a id="title" href="{{ plant.url }}" target="_blank">{{ plant.plant_name }}</a></h2>
+            <div class="plant-details">
+                <li id="cur-price">£{{ plant.cur_price }}</li>
+                <!-- <li id="og-price">£{{ plant.original_price }}</li> -->
+                {% if plant.in_stock %}
+                <li id="in-stock">In Stock</li>
+                {% else %}
+                <li id="out-stock">Out of Stock</li>
+                {% endif %}
+                <form action="{{ url_for('views.delete_plant', plant_id=plant.plant_id)}}" method="post" onsubmit="return confirm('Are you sure you wish to remove {{ plant.plant_name }}?');">
+                    <button type="submit" id="plant-delete">Delete</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
 {% endblock %}
